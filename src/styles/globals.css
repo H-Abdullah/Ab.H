@@ -1,21 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  body {
+    @apply font-display; /* appyling Mukta font to whole document */
+  }
 }
 
-@media (prefers-color-scheme: dark) {
+:root {
+  --background: #ffffff; /* Light mode background */
+  --background-rgb: 255, 255, 255; /* Light mode background as RGB */
+  
+  --foreground: #171717; /* Light mode foreground */
+  --foreground-rgb: 23, 23, 23; /* Light mode foreground as RGB */
+}
+
+.dark {
+  --background: #0a0a0a; /* Dark mode background */
+  --background-rgb: 10, 10, 10; /* Dark mode background as RGB */
+  
+  --foreground: #ededed; /* Dark mode foreground */
+  --foreground-rgb: 237, 237, 237; /* Dark mode foreground as RGB */
+}
+
+
+/* causes the darkmode not functioning?  */
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
+
+/* *, *::before, *::after {
+  border: 1px dotted red;
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar in Webkit browsers like Chrome, Safari, Edge */
+}
+
+/* sidebar nav links  */
+.menu-link {
+  @apply w-full h-12 flex justify-center items-center
+}
+
+/* coupled with :hover below for hovering effect for sidebar nav links  */
+.hover-effect {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.hover-effect:hover {
+  background-color: rgba(var(--foreground-rgb), 0.9);
+  color: rgba(var(--background-rgb), 0.9);
+}
+
+
+/* .sidebar-scroll {
+  overflow: hidden;
+} */
+
+/* body {
+  max-height: 100vh;
+} */
+
+/* for HomeTextIntro sentences */
+.text-intro {
+  @apply text-4xl font-bold;
+  transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out; /* Smooth transition for opacity and color */
 }
